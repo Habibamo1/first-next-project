@@ -1,38 +1,71 @@
-'use client';
+// async function getProduct(id) {
+//     const fetchData = await fetch(`https://fakestoreapi.com/products/${id}`);
+//     return fetchData.json();
+// }
+import Image from "next/image";
 
-import { useParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
 
-const ProductDetails = () => {
+async function getProduct(id) {
+    try {
+        console.log("getProduct: fetching id =", id);
 
-    const { id } = useParams();
-    const [product, setProduct] = useState({});
+        const res = await fetch(`https://fakestoreapi.com/products/${id}`, {
+            cache: "no-store",
+        });
+        console.log("getProduct: status", res.status);
+        if (!res.ok) {
+            console.error(`getProduct: HTTP ${res.status} for id=${id}`);
+            return null;
+        }
+        const text = await res.text();
+        console.log("getProduct: body length =", text.length);
 
-    const fetchProductDetails = async () => {
-        const fetchData = await fetch(`https://fakestoreapi.com/products/${id}`);
-        const data = await fetchData.json();
-        setProduct(data);
-        console.log(data);
+        if (!text) {
+            console.error("getProduct: empty response body for id =", id);
+            return null;
+        }
+        const data = JSON.parse(text);
+        return data;
+    } catch (err) {
+        console.error("getProduct error:", err);
+        return null;
     }
-    useEffect(() => {
-        fetchProductDetails();
-    }, []);
+}
+
+
+async function getAllProducts() {
+    const fetchData = await fetch(`https://fakestoreapi.com/products`);
+    return fetchData.json();
+}
+export async function generateStaticParams() {
+    const products = await getAllProducts();
+    const ids = products.map((pro) => {
+        return { id: pro.id.toString() }
+    });
+    return ids;
+}
+
+const ProductDetails = async ({ params }) => {
+
+    const { id } = await params;
+    const product = await getProduct(id);
+
+
     return (
         <div>
             <div className="min-h-screen bg-white p-4">
                 <div className="max-w-6xl mx-auto">
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Product Image */}
+
                         <div className="bg-white rounded-lg border p-4">
-                            <img
+                            <Image
                                 src={product.image}
                                 alt={product.title}
                                 className="w-full h-96 object-contain mix-blend-multiply"
                             />
                         </div>
 
-                        {/* Product Details */}
                         <div className="space-y-6">
                             <div>
                                 <h1 className="text-3xl font-bold text-gray-900">{product.title}</h1>
@@ -44,7 +77,7 @@ const ProductDetails = () => {
                                 </div>
                             </div>
 
-                            {/* Rating */}
+
                             <div className="flex items-center space-x-2">
                                 <div className="flex">
                                     {[...Array(5)].map((_, i) => (
@@ -64,13 +97,13 @@ const ProductDetails = () => {
                                 </span>
                             </div>
 
-                            {/* Description */}
+
                             <div>
                                 <h3 className="text-lg font-semibold mb-2">Description</h3>
                                 <p className="text-gray-700 leading-relaxed">{product.description}</p>
                             </div>
 
-                            {/* Action Buttons */}
+
                             <div className="flex space-x-4">
                                 <button className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
                                     Add to Cart
@@ -80,7 +113,7 @@ const ProductDetails = () => {
                                 </button>
                             </div>
 
-                            {/* Additional Info */}
+
                             <div className="border-t pt-6">
                                 <h3 className="text-lg font-semibold mb-3">Product Information</h3>
                                 <div className="grid grid-cols-2 gap-4 text-sm">

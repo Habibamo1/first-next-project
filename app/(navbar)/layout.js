@@ -1,10 +1,13 @@
+import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 
 export default function NavbarLayout({ children }) {
     return (
         <>
             <Navbar />
-            <main>{children}</main>
+            <main className=" grow">{children}</main>
+
+            <Footer />
         </>
     );
 }

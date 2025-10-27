@@ -8,6 +8,7 @@ const links = [
     { path: "/contact", name: "Contact" },
     { path: "/products", name: "Products" },
     { path: "/login", name: "login" },
+    { path: "/users", name: "users" }
 
 ]
 const Navbar = () => {
