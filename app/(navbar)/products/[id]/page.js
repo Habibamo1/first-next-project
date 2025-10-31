@@ -63,6 +63,8 @@ const ProductDetails = async ({ params }) => {
                                 src={product.image}
                                 alt={product.title}
                                 className="w-full h-96 object-contain mix-blend-multiply"
+                                width={300}
+                                height={300}
                             />
                         </div>
 
