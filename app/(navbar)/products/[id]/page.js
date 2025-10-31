@@ -10,7 +10,7 @@ async function getProduct(id) {
         console.log("getProduct: fetching id =", id);
 
         const res = await fetch(`https://fakestoreapi.com/products/${id}`, {
-            cache: "no-store",
+
         });
         console.log("getProduct: status", res.status);
         if (!res.ok) {
