@@ -9,6 +9,5 @@ export default function Home() {
         You will find a variety of products to suit your needs!
       </h1>
     </div>
-
   );
 }

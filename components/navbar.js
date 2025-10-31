@@ -5,10 +5,11 @@ import React from 'react'
 
 const links = [
     { path: "/about", name: "About" },
-    { path: "/contact", name: "Contact" },
     { path: "/products", name: "Products" },
-    { path: "/login", name: "login" },
-    { path: "/users", name: "users" }
+    { path: "/users", name: "users" },
+    { path: "/todos", name: "Todos" },
+    { path: "/contact", name: "Contact" },
+    { path: "/login", name: "login" }
 
 ]
 const Navbar = () => {

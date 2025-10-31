@@ -4,7 +4,6 @@ const About = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
             <div className="max-w-6xl mx-auto">
-                {/* Header Section */}
                 <div className="text-center mb-16">
                     <h1 className="text-5xl font-bold text-gray-800 mb-6">About Our Company</h1>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -12,8 +11,6 @@ const About = () => {
                         businesses and individuals to achieve their goals through innovation and excellence.
                     </p>
                 </div>
-
-                {/* Mission & Vision */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
                     <div className="bg-white rounded-2xl shadow-lg p-8">
                         <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
@@ -45,7 +42,6 @@ const About = () => {
                     </div>
                 </div>
 
-                {/* Our Story */}
                 <div className="bg-white rounded-2xl shadow-lg p-8 mb-16">
                     <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Our Story</h2>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -73,8 +69,6 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* Our Values */}
                 <div className="mb-16">
                     <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">Our Values</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -119,7 +113,6 @@ const About = () => {
                     </div>
                 </div>
 
-                {/* Team Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                     <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">Meet Our Leadership</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -156,7 +149,6 @@ const About = () => {
                     </div>
                 </div>
 
-                {/* CTA Section */}
                 <div className="text-center mt-16">
                     <h2 className="text-3xl font-bold text-gray-800 mb-4">Ready to Work With Us?</h2>
                     <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
